@@ -16,23 +16,12 @@
             text-align: center;
             padding: 10px 0;
         }
+
         nav a:hover {
             background-color: #777;
-        } 
-
-        aside {
-            float: left;
-            width: 20%;
-            background-color: #f4f4f4;
-            padding: 10px;
-            box-shadow: inset 0 0 5px #ccc;
-            height: 130vh;
         }
 
-        main {
-            margin-left: 22%;
-            padding: 10px;
-        }
+
 
         footer {
             clear: both;
@@ -44,45 +33,29 @@
 <body>
     <header class="">
         <div class="px-4 mx-auto sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 lg:h-20">
+            <div class="flex items-center h-16 lg:h-20">
                 <div class="flex-shrink-0">
                     <a href="#" title="" class="flex">
                         <img class="w-100 h-8" src="https://dynamic.design.com/asset/logo/223af9e0-8de2-4baa-9b50-406cba87fa4c/logo-search-grid-2x?logoTemplateVersion=1&v=638253462490100000&text=Real+estate+" alt="" />
-                        <span class="ml-5">HaZul Real Estate </span>
+                        <span class="ml-5 mr-40">HaZul Real Estate </span>
                     </a>
                 </div>
 
-                <button type="button" class="inline-flex p-1 text-black transition-all duration-200 border border-black lg:hidden focus:bg-gray-100 hover:bg-gray-100">
-                    <!-- Menu open: "hidden", Menu closed: "block" -->
-                    <svg class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-
-                    <!-- Menu open: "block", Menu closed: "hidden" -->
-                    <svg class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
+                <div class="flex justify-between">
+                    <a href="index.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2 hover:text-white">Main Page</a>
+                    <a href="#Properties" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2 hover:text-white">Properties</a>
+                    <a href="#Aboutus" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2 hover:text-white">Aboutus</a>
+                    <a href="#ContactUs" class="block py-2 px-4 hover:bg-gray-700 rounded hover:text-white">Contact Us</a>
+                </div>
 
                 <div class="hidden ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10">
                     <div class="w-px h-5 bg-black/20"></div>
-
-                    <a href="auth/login.php" title="Login" class="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-white border-2 border-white hover:bg-white hover:text-black transition-all duration-200 focus:bg-white focus:text-black "> Log in </a>
-
-                    <a href="auth/register.php" title="Register" class="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-white border-2 border-white hover:bg-white hover:text-black transition-all duration-200 focus:bg-white focus:text-black" role="button"> SignUp </a>
+                    <a href="auth/login.php" title="Login" class="inline-flex items-center justify-center rounded text-base font-semibold text-white py-2 px-3 bg-blue-700 transition-all duration-200 focus:bg-white focus:text-black "> Log in </a>
+                    <a href="auth/register.php" title="Register" class="inline-flex items-center justify-center rounded px-3 py-2 text-base font-semibold text-white border-2 border-white hover:bg-blue-700 hover:text-white transition-all duration-200 focus:bg-blue-700 focus:text-white" role="button"> SignUp </a>
                 </div>
             </div>
         </div>
     </header>
-
-    <aside>
-        <nav>
-            <a href="index.php" class="block py-2 px-4 bg-gray-700 rounded mb-2 text-white">Main Page</a>
-            <a href="./Main Page/Aboutus.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2 hover:text-white">Aboutus</a>
-            <a href="./Main Page/Properties.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2 hover:text-white">Properties</a>
-            <a href="./Main Page/ContactUs.php" class="block py-2 px-4 hover:bg-gray-700 rounded hover:text-white">Contact Us</a>
-        </nav>
-    </aside>
 
     <main>
 
@@ -95,10 +68,10 @@
                     <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
                         <div>
                             <h1 class="text-4xl font-bold text-black sm:text-6xl lg:text-7xl">
-                                Collaborate remotely, with
+                                Welcome to Your New Home.
                                 <div class="relative inline-flex">
                                     <span class="absolute inset-x-0 bottom-0 border-b-[30px] border-[#4ADE80]"></span>
-                                    <h1 class="relative text-4xl font-bold text-black sm:text-6xl lg:text-7xl">Postcrafts.</h1>
+                                    <h1 class="relative text-4xl font-bold text-black sm:text-6xl lg:text-7xl">HaZul.</h1>
                                 </div>
                             </h1>
 
@@ -106,19 +79,11 @@
 
                             <div class="mt-10 sm:flex sm:items-center sm:space-x-8">
                                 <a href="#" title="" class="inline-flex items-center justify-center px-10 py-4 text-base font-semibold text-white transition-all duration-200 bg-orange-500 hover:bg-orange-600 focus:bg-orange-600" role="button"> Start exploring </a>
-
-                                <a href="#" title="" class="inline-flex items-center mt-6 text-base font-semibold transition-all duration-200 sm:mt-0 hover:opacity-80">
-                                    <svg class="w-10 h-10 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path fill="#F97316" stroke="#F97316" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    Watch video
-                                </a>
                             </div>
                         </div>
 
                         <div>
-                            <img class="w-full" src="https://cdn.rareblocks.xyz/collection/celebration/images/hero/2/hero-img.png" alt="" />
+                            <img class="w-full" src="./Assets/Images/2.jpg" alt="" />
                         </div>
                     </div>
                 </div>
@@ -126,41 +91,8 @@
         </div>
 
 
-
-        <!-- About us -->
-        <section class="py-10 bg-gray-50 sm:py-16 lg:py-24">
-            <div class="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
-                <div class="grid items-center grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-20">
-                    <div class="">
-                        <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Grow business with Celebration.</h2>
-                        <p class="mt-4 text-base leading-relaxed text-gray-600">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-                    </div>
-
-                    <div class="relative pl-20 pr-6 sm:pl-6 md:px-0">
-                        <div class="relative w-full max-w-xs mt-4 mb-10 ml-auto">
-                            <img class="ml-auto" src="./Assets/Images/7.jpg" alt="" />
-
-                            <img class="absolute -top-4 -left-12" src="https://cdn.rareblocks.xyz/collection/celebration/images/features/1/wavey-lines.svg" alt="" />
-
-                            <div class="absolute -bottom-10 -left-16">
-                                <div class="bg-yellow-300">
-                                    <div class="px-8 py-10">
-                                        <span class="block text-4xl font-bold text-black lg:text-5xl"> 53% </span>
-                                        <span class="block mt-2 text-base leading-tight text-black"> High Conversions<br />Everything </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-
         <!-- Properties -->
-        <section class="py-10 bg-gray-50 sm:py-16 lg:py-24" id="houses">
+        <section class="py-10 bg-gray-50 sm:py-16 lg:py-24" id="Properties">
             <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                 <div class="flex items-end justify-between">
                     <div class="flex-1 text-center lg:text-left">
@@ -340,8 +272,40 @@
         </section>
 
 
+        <!-- About us -->
+        <section class="py-10 bg-white sm:py-16 lg:py-24" id="Aboutus">
+            <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl lg:leading-tight">People who made it successful</h2>
+                    <p class="max-w-2xl mx-auto mt-4 text-xl text-gray-600">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis.</p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-3 md:mt-16 lg:gap-x-12">
+                    <div>
+                        <img class="w-full" src="./Assets/Images/suleiman.jpg" alt="" />
+                    </div>
+
+                    <div>
+                        <img class="w-full" src="./Assets/Images/abdullahi.jpg" alt="" />
+                    </div>
+
+                    <div>
+                        <img class="w-full" src="./Assets/Images/Abas.jpg" alt="" />
+                    </div>
+                    <div>
+                        <img class="w-full" src="./Assets/Images/Bakar.jpg" alt="" />
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center md:mt-16">
+                    <a href="#" title="" class="inline-flex items-center justify-center py-4 font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md px-14 hover:bg-blue-700 focus:bg-blue-700" role="button"> Join our team </a>
+                </div>
+            </div>
+        </section>
+
+
         <!-- Contact Us -->
-        <section class="py-10 bg-gray-100 sm:py-16 lg:py-24">
+        <section class="py-10 bg-gray-100 sm:py-16 lg:py-24" id="ContactUs">
             <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                 <div class="max-w-2xl mx-auto text-center">
                     <h2 class="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">Contact us</h2>
@@ -370,7 +334,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                                 <p class="mt-6 text-lg font-medium text-gray-900">RealState@gmail.com</p>
-                                <p class="mt-1 text-lg font-medium text-gray-900">suleymaansaid9@exgmailample.com</p>
+                                <p class="mt-1 text-lg font-medium text-gray-900">suleymaansaid9@gmail.com</p>
                             </div>
                         </div>
 

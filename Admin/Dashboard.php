@@ -2,11 +2,13 @@
 session_start();
 include '../includes/db_connect.php';
 
-// Check admin authentication
+// // Check admin authentication
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../auth/login.php");
     exit();
 }
+
+
 
 // Fetch property count
 $stmt = $pdo->query("SELECT COUNT(*) AS total_properties FROM properties");

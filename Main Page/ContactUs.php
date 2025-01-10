@@ -7,6 +7,7 @@
     <title>Real Estate System</title>
     <link rel="stylesheet" href="./Assets/Css/Style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="https://dynamic.design.com/asset/logo/223af9e0-8de2-4baa-9b50-406cba87fa4c/logo-search-grid-2x?logoTemplateVersion=1&v=638253462490100000&text=Real+estate+" type="image/x-icon">
     <style>
         header {
             -tw-bg-opacity: 1;
@@ -14,19 +15,6 @@
             color: #fff;
             text-align: center;
             padding: 10px 0;
-        }
-
-        nav {
-            background-color: #555;
-            overflow: hidden;
-            margin-top: -12px;
-        }
-
-        nav a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            display: inline-block;
         }
 
         nav a:hover {
@@ -55,31 +43,52 @@
 </head>
 
 <body>
-    <header>
-        <h1>Welcome to Real Estate Management System</h1>
-    </header>
-    <nav>
-        <div class="flex flex-1 justify-between">
-            <div>
-                <!-- <a href="index.php">Home</a> -->
-            </div>
-            <div>
-                <a href="auth/login.php">Login</a>
-                <a href="auth/register.php">Register</a>
+    <header class="">
+        <div class="px-4 mx-auto sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" title="" class="flex">
+                        <img class="w-100 h-8" src="https://dynamic.design.com/asset/logo/223af9e0-8de2-4baa-9b50-406cba87fa4c/logo-search-grid-2x?logoTemplateVersion=1&v=638253462490100000&text=Real+estate+" alt="" />
+                        <span class="ml-5">HaZul Real Estate </span>
+                    </a>
+                </div>
+
+                <button type="button" class="inline-flex p-1 text-black transition-all duration-200 border border-black lg:hidden focus:bg-gray-100 hover:bg-gray-100">
+                    <!-- Menu open: "hidden", Menu closed: "block" -->
+                    <svg class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+
+                    <!-- Menu open: "block", Menu closed: "hidden" -->
+                    <svg class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+
+                <div class="hidden ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10">
+                    <div class="w-px h-5 bg-black/20"></div>
+
+                    <a href="auth/login.php" title="Login" class="inline-flex items-center justify-center rounded text-base font-semibold text-white py-2 px-3 bg-blue-700 transition-all duration-200 focus:bg-white focus:text-black "> Log in </a>
+
+                    <a href="auth/register.php" title="Register" class="inline-flex items-center justify-center rounded px-3 py-2 text-base font-semibold text-white border-2 border-white hover:bg-blue-700 hover:text-white transition-all duration-200 focus:bg-blue-700 focus:text-white" role="button"> SignUp </a>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <aside>
         <nav>
-            <a href="../index.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Main Page</a>
-            <a href="Aboutus.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Aboutus</a>
-            <a href="./Main Page/Properties.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Properties</a>
-            <a href="./Main Page/ContactUs.php" class="block py-2 px-4 bg-gray-700 rounded">Contact Us</a>
+            <a href="../index.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2 hover:text-white">Main Page</a>
+            <a href="Aboutus.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2 hover:text-white">Aboutus</a>
+            <a href="Properties.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2 hover:text-white">Properties</a>
+            <a href="ContactUs.php" class="block py-2 px-4 bg-gray-700 rounded text-white">Contact Us</a>
         </nav>
     </aside>
 
     <main>
+
+
+        <!-- Contact Us -->
         <section class="py-10 bg-gray-100 sm:py-16 lg:py-24">
             <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                 <div class="max-w-2xl mx-auto text-center">
@@ -109,7 +118,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                                 <p class="mt-6 text-lg font-medium text-gray-900">RealState@gmail.com</p>
-                                <p class="mt-1 text-lg font-medium text-gray-900">suleymaansaid9@exgmailample.com</p>
+                                <p class="mt-1 text-lg font-medium text-gray-900">suleymaansaid9@gmail.com</p>
                             </div>
                         </div>
 
