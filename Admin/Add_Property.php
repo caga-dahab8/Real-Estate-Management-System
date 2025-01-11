@@ -1,7 +1,11 @@
 <?php
 session_start();
 include '../includes/db_connect.php';
-
+// // Check admin authentication
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../auth/login.php");
+    exit();
+}
 $success = null;
 
 // Handle form submission

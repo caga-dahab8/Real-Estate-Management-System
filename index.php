@@ -20,6 +20,19 @@
         nav a:hover {
             background-color: #777;
         }
+        .fixed-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000; /* Ensure the header stays above other content */
+        box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+    }
+
+
+    .content-with-header {
+        padding-top: 64px; /* Adjust this value to match the height of your header */
+    }
 
 
 
@@ -31,7 +44,7 @@
 </head>
 
 <body>
-    <header class="">
+    <header class="fixed-header">
         <div class="px-4 mx-auto sm:px-6 lg:px-8">
             <div class="flex items-center h-16 lg:h-20">
                 <div class="flex-shrink-0">
@@ -57,7 +70,7 @@
         </div>
     </header>
 
-    <main>
+    <main class="content-with-header">
 
         <!-- Home -->
 
@@ -273,7 +286,7 @@
 
 
         <!-- About us -->
-        <section class="py-10 bg-white sm:py-16 lg:py-24" id="Aboutus">
+        <section class="py-10 bg-gray-100 sm:py-16 lg:py-24" id="Aboutus">
             <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                 <div class="max-w-3xl mx-auto text-center">
                     <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl lg:leading-tight">People who made it successful</h2>

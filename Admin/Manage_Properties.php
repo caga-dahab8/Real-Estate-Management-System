@@ -7,7 +7,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 
 include '../includes/db_connect.php';
 
-// Fetch all properties with assigned user information
+// Fetch all properties for initial load
 $stmt = $pdo->query("
     SELECT p.*, u.name AS assigned_user 
     FROM properties p 
@@ -59,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['property_id'], $_POST
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Properties</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -90,13 +91,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['property_id'], $_POST
         <main class="flex-1 p-6">
             <h1 class="text-2xl font-bold mb-6">Manage Properties</h1>
 
+            <!-- Search Bar -->
+            <div class="mb-6">
+                <input type="text" id="searchInput" placeholder="Search properties by title, price, location, or type..." class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
             <!-- Properties Table -->
             <div class="overflow-x-auto bg-white shadow-md rounded-lg">
-                <table class="w-full table-auto">
+                <table id="propertiesTable" class="w-full table-auto">
                     <thead class="bg-gray-800 text-white">
                         <tr>
                             <th class="py-3 px-4">Title</th>
                             <th class="py-3 px-4">Price</th>
+                            <th class="py-3 px-4">Location</th>
                             <th class="py-3 px-4">Type</th>
                             <th class="py-3 px-4">Assigned To</th>
                             <th class="py-3 px-4">Actions</th>
@@ -107,6 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['property_id'], $_POST
                             <tr class="border-b hover:bg-gray-50">
                                 <td class="py-3 px-4"><?= htmlspecialchars($property['title']) ?></td>
                                 <td class="py-3 px-4">$<?= htmlspecialchars($property['price']) ?></td>
+                                <td class="py-3 px-4"><?= htmlspecialchars($property['location']) ?></td>
                                 <td class="py-3 px-4"><?= htmlspecialchars($property['type']) == 'rent' ? 'For Rent' : 'For Sale' ?></td>
                                 <td class="py-3 px-4">
                                     <?= $property['assigned_user'] ? htmlspecialchars($property['assigned_user']) : '<span class="text-gray-500">Not Assigned</span>' ?>
@@ -141,6 +149,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['property_id'], $_POST
             </div>
         </main>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4">
+        &copy; 2025 Real Estate Management System
+    </footer>
+    <!-- JavaScript for Dynamic Search -->
+    <script>
+        function searchTable() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById("propertiesTable");
+            const tr = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                const tdTitle = tr[i].getElementsByTagName("td")[0];
+                const tdPrice = tr[i].getElementsByTagName("td")[1];
+                const tdLocation = tr[i].getElementsByTagName("td")[2];
+                const tdType = tr[i].getElementsByTagName("td")[3];
+
+                if (tdTitle || tdPrice || tdLocation || tdType) {
+                    const txtValueTitle = tdTitle.textContent || tdTitle.innerText;
+                    const txtValuePrice = tdPrice.textContent || tdPrice.innerText;
+                    const txtValueLocation = tdLocation.textContent || tdLocation.innerText;
+                    const txtValueType = tdType.textContent || tdType.innerText;
+
+                    if (
+                        txtValueTitle.toUpperCase().indexOf(filter) > -1 ||
+                        txtValuePrice.toUpperCase().indexOf(filter) > -1 ||
+                        txtValueLocation.toUpperCase().indexOf(filter) > -1 ||
+                        txtValueType.toUpperCase().indexOf(filter) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        // Attach the search function to the input field
+        document.getElementById("searchInput").addEventListener("keyup", searchTable);
+    </script>
 </body>
 
 </html>

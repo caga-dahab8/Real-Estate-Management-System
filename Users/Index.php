@@ -2,6 +2,12 @@
 session_start();
 include '../includes/db_connect.php';
 
+// // Check User authentication
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
+    header("Location: ../auth/login.php");
+    exit();
+}
+
 // Check if the session variable exists
 $userName = isset($_SESSION['name']) ? htmlspecialchars($_SESSION['name']) : 'Guest';
 

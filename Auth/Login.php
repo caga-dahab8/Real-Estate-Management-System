@@ -2,33 +2,6 @@
 session_start();
 include '../includes/db_connect.php';
 
-
-// Check if the user is already remembered
-if (isset($_COOKIE['email']) && isset($_COOKIE['password'])) {
-    $email = $_COOKIE['email'];
-    $password = $_COOKIE['password'];
-
-    // Fetch user based on email
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-    $user = $stmt->fetch();
-
-    // Verify the stored password hash
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['name'] = $user['name'];
-        $_SESSION['role'] = $user['role'];
-
-        // Redirect based on role
-        if ($user['role'] === 'admin') {
-            header("Location: ../admin/dashboard.php");
-        } else {
-            header("Location: ../users/index.php");
-        }
-        exit();
-    }
-}
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -49,6 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($remember) {
             setcookie('email', $email, time() + (86400 * 30), "/"); // 30 days
             setcookie('password', $password, time() + (86400 * 30), "/");
+        } else {
+            // Clear cookies if "Remember Me" is unchecked
+            setcookie('email', '', time() - 3600, "/"); // Expire immediately
+            setcookie('password', '', time() - 3600, "/"); // Expire immediately
         }
 
         // Redirect based on role
@@ -75,15 +52,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <?php if (isset($error)): ?>
-        <p style="color: red;"><?= $error ?></p>
-    <?php endif; ?>
+
 
     <section class="bg-white">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
                 <div class="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
                     <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl">Sign in to Celebration</h2>
+                    <?php if (isset($error)): ?>
+                        <p style="color: red;"><?= $error ?></p>
+                    <?php endif; ?>
                     <p class="mt-2 text-base text-gray-600">Don’t have an account? <a href="Register.php" title="" class="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 hover:underline focus:text-blue-700">Create a free account</a></p>
 
                     <form action="#" method="POST" class="mt-8">
@@ -96,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         name="email"
                                         id="email"
                                         placeholder="Enter email to get started"
+                                        value="<?= isset($_COOKIE['email']) ? htmlspecialchars($_COOKIE['email']) : '' ?>"
                                         class="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600" />
                                 </div>
                             </div>
@@ -112,8 +91,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         name="password"
                                         id="password"
                                         placeholder="Enter your password"
+                                        value="<?= isset($_COOKIE['password']) ? htmlspecialchars($_COOKIE['password']) : '' ?>"
                                         class="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600" />
                                 </div>
+                            </div>
+
+                            <!-- Remember Me Checkbox -->
+                            <div class="flex items-center">
+                                <input
+                                    type="checkbox"
+                                    name="remember"
+                                    id="remember"
+                                    class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                                    <?= isset($_COOKIE['email']) ? 'checked' : '' ?> />
+                                <label for="remember" class="ml-2 text-sm text-gray-900">Remember Me</label>
                             </div>
 
                             <div>
@@ -138,8 +129,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
     </section>
-
-
 </body>
 
 </html>
