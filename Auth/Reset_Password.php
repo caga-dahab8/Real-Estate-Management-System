@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute([$hashedPassword, $email]);
 
         $success = "Your password has been reset successfully. You can now <a href='login.php' class='text-blue-600 hover:underline'>log in</a>.";
+        header("Location: login.php");
     } else {
         $error = "Passwords do not match.";
     }

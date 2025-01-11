@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/style.css"> <!-- Your custom styles -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
-</head>
-<body>
-    <header style="background-color: #333; color: #fff; padding: 15px;">
-        <h1>Admin Dashboard</h1>
-    </header>
+<header class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto px-4 flex justify-between">
+        <h1 class="text-xl font-bold">Admin Dashboard</h1>
+        <div>
+            Welcome, <?= htmlspecialchars($_SESSION['name']) ?>!
+            <a href="../auth/logout.php" class="text-red-500 hover:underline ml-4">Logout</a>
+        </div>
+    </div>
+</header>

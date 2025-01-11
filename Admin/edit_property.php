@@ -61,15 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-gray-100 min-h-screen">
 
     <!-- Header -->
-    <header class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto px-4 flex justify-between">
-            <h1 class="text-xl font-bold">Admin Dashboard</h1>
-            <div>
-                Welcome, <?= htmlspecialchars($_SESSION['name']) ?>!
-                <a href="../auth/logout.php" class="text-blue-300 hover:underline ml-4">Logout</a>
-            </div>
-        </div>
-    </header>
+    <?php
+    include "../Includes/header.php"
+    ?>
 
     <div class="flex flex-1">
         <!-- Sidebar -->
@@ -77,9 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2 class="text-lg font-bold mb-4">Navigation</h2>
             <nav>
                 <a href="dashboard.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Dashboard</a>
-                <a href="manage_properties.php" class="block py-2 px-4 bg-gray-700 rounded mb-2">Manage Properties</a>
                 <a href="add_property.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Add Property</a>
-                <a href="view_inquiries.php" class="block py-2 px-4 hoverbg-gray-700 rounded">View Inquiries</a>
+                <a href="manage_properties.php" class="block py-2 px-4 bg-gray-700 rounded mb-2">Manage Properties</a>
+                <a href="view_inquiries.php" class="block py-2 px-4 hover:bg-gray-700 rounded">View Inquiries</a>
             </nav>
         </aside>
 

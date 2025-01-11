@@ -41,9 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         // Display success popup
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             <?php if ($success): ?>
-            alert("<?= htmlspecialchars($success) ?>");
+                alert("<?= htmlspecialchars($success) ?>");
             <?php endif; ?>
         });
 
@@ -77,62 +77,71 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-gray-100 min-h-screen">
 
     <!-- Header -->
-    <header class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto px-4 flex justify-between">
-            <h1 class="text-xl font-bold">Admin Dashboard</h1>
-            <div>
-                Welcome, <?= htmlspecialchars($_SESSION['name']) ?>!
-                <a href="../auth/logout.php" class="text-blue-300 hover:underline ml-4">Logout</a>
-            </div>
-        </div>
-    </header>
+    <?php
+    include "../Includes/header.php"
+    ?>
     <div class="flex flex-1">
         <!-- Sidebar -->
         <aside class="w-64 bg-gray-800 text-white p-4">
             <h2 class="text-lg font-bold mb-4">Navigation</h2>
             <nav>
                 <a href="dashboard.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Dashboard</a>
-                <a href="manage_properties.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Manage Properties</a>
                 <a href="add_property.php" class="block py-2 px-4 bg-gray-700 rounded mb-2">Add Property</a>
+                <a href="manage_properties.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Manage Properties</a>
                 <a href="view_inquiries.php" class="block py-2 px-4 hover:bg-gray-700 rounded">View Inquiries</a>
             </nav>
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 p-6">
-            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold mb-4">Add New Property</h2>
+        <main class="flex-1 p-6 bg-gradient-to-r from-blue-50 to-purple-50">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden p-8">
+                <h2 class="text-3xl font-extrabold text-gray-800 mb-6 text-center">Add New Property</h2>
 
-                <form method="POST" enctype="multipart/form-data" class="space-y-6" onsubmit="return validateForm()">
-                    <div>
-                        <label for="title" class="block text-gray-700 font-bold">Title:</label>
-                        <input type="text" id="title" name="title" class="w-full border border-gray-300 rounded p-2" required>
+                <form method="POST" enctype="multipart/form-data" class="space-y-8" onsubmit="return validateForm()">
+                    <!-- Title Field -->
+                    <div class="space-y-2">
+                        <label for="title" class="block text-sm font-semibold text-gray-700">Title:</label>
+                        <input type="text" id="title" name="title" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300" placeholder="Enter property title" required>
                     </div>
-                    <div>
-                        <label for="description" class="block text-gray-700 font-bold">Description:</label>
-                        <textarea id="description" name="description" class="w-full border border-gray-300 rounded p-2" rows="4" required></textarea>
+
+                    <!-- Description Field -->
+                    <div class="space-y-2">
+                        <label for="description" class="block text-sm font-semibold text-gray-700">Description:</label>
+                        <textarea id="description" name="description" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300" rows="5" placeholder="Describe the property" required></textarea>
                     </div>
-                    <div>
-                        <label for="price" class="block text-gray-700 font-bold">Price:</label>
-                        <input type="number" id="price" name="price" class="w-full border border-gray-300 rounded p-2" required>
+
+                    <!-- Price Field -->
+                    <div class="space-y-2">
+                        <label for="price" class="block text-sm font-semibold text-gray-700">Price:</label>
+                        <input type="number" id="price" name="price" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300" placeholder="Enter price" required>
                     </div>
-                    <div>
-                        <label for="location" class="block text-gray-700 font-bold">Location:</label>
-                        <input type="text" id="location" name="location" class="w-full border border-gray-300 rounded p-2" required>
+
+                    <!-- Location Field -->
+                    <div class="space-y-2">
+                        <label for="location" class="block text-sm font-semibold text-gray-700">Location:</label>
+                        <input type="text" id="location" name="location" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300" placeholder="Enter location" required>
                     </div>
-                    <div>
-                        <label for="type" class="block text-gray-700 font-bold">Type:</label>
-                        <select id="type" name="type" class="w-full border border-gray-300 rounded p-2">
+
+                    <!-- Type Field -->
+                    <div class="space-y-2">
+                        <label for="type" class="block text-sm font-semibold text-gray-700">Type:</label>
+                        <select id="type" name="type" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300">
                             <option value="rent">For Rent</option>
                             <option value="sale">For Sale</option>
                         </select>
                     </div>
-                    <div>
-                        <label for="image" class="block text-gray-700 font-bold">Image:</label>
-                        <input type="file" id="image" name="image" class="w-full border border-gray-300 rounded p-2" required>
+
+                    <!-- Image Field -->
+                    <div class="space-y-2">
+                        <label for="image" class="block text-sm font-semibold text-gray-700">Image:</label>
+                        <input type="file" id="image" name="image" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300" required>
                     </div>
-                    <div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Add Property</button>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button type="submit" class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            Add Property
+                        </button>
                     </div>
                 </form>
             </div>
@@ -143,4 +152,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         &copy; 2025 Real Estate Management System
     </footer>
 </body>
+
 </html>

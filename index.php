@@ -25,13 +25,13 @@
         top: 0;
         left: 0;
         right: 0;
-        z-index: 1000; /* Ensure the header stays above other content */
-        box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+        z-index: 1000;
+        box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1); 
     }
 
 
     .content-with-header {
-        padding-top: 64px; /* Adjust this value to match the height of your header */
+        padding-top: 64px; 
     }
 
 
